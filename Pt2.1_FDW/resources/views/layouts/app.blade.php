@@ -3,7 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>@yield('titol') - Web Corporativa</titl <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+    <title>@yield('titol') - Web Corporativa</title> 
+    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
 </head>
 
 <body>
