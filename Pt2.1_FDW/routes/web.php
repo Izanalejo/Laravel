@@ -7,7 +7,8 @@ Route::get('/', function () {
 });
 
 Route::get('/serveis', function () { 
-    return view('serveis'); 
+    $serveis = ['Webs corporatives', 'Botigues online', 'Aplicacions web'];
+    return view('serveis', ['serveis' => $serveis]);
 }); 
 
 Route::get('/about', function () {
