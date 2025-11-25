@@ -1,8 +1,10 @@
 <?php
+namespace App\Http\Controller;
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Controller;
 
-// Ruta original de inicio
+ // Ruta original de inicio
 Route::get('/', function () {
     return view('inici');
 });
@@ -88,3 +90,4 @@ Route::get('/info/{nom}/{cognom}/{edat}', function ($nom, $cognom, $edat) {
     'cognom' => '[A-Za-zÀ-ÿ]+',
     'edat' => '[0-9]+'
 ]);
+ 

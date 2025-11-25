@@ -12,6 +12,10 @@
     <header>
         @include('partials.nav')
     </header>
+
+    <x-alert type="success" title="Operació correcta">
+        El registre s'ha guardat correctament
+    </x-alert>
     <main style="padding: 60px"> @yield('contingut') </main>
     @include('partials.footer')
 </body>
