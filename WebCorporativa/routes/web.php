@@ -2,17 +2,14 @@
 namespace App\Http\Controller;
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\PaginaController;
+use App\Http\Controllers\ProducteController;
 
  // Ruta original de inicio
-Route::get('/', function () {
-    return view('inici');
-});
+Route::get('/', [PaginaController::class, 'inici']);
 
 // EXERCICI 1 — Ruta que retorna text directament
-Route::get('/about', function () {
-    return view('about');
-});
+Route::get('/about', [PaginaController::class, 'about']);
 
 // EXERCICI 2 — Passar una variable a una vista (10 serveis)
 Route::get('/serveis', function () { 
@@ -32,32 +29,19 @@ Route::get('/serveis', function () {
 }); 
 
 // EXERCICI 3 — Paràmetre obligatori
-Route::get('/producte/{id}', function ($id) {
-    return "Has seleccionat el producte número $id.";
-})->where('id', '[0-9]+');
+Route::get('/producte/{id}', [PaginaController::class, 'producte'])->where('id', '[0-9]+');
 
 // EXERCICI 4 — Paràmetre opcional
-Route::get('/salutacio/{nom?}', function ($nom = null) {
-    if ($nom) {
-        return "Hola, $nom!";
-    }
-    return "Hola, convidat!";
-})->where('nom', '[A-Za-zÀ-ÿ]+');
+Route::get('/salutacio/{nom?}', [PaginaController::class, 'saludo'])->where('nom', '[A-Za-zÀ-ÿ]+');
 
 // EXERCICI 5 — Paràmetre amb restricció regex
-Route::get('/client/{dni}', function ($dni) {
-    return "Client amb DNI: $dni";
-})->where('dni', '[0-9]{8}[A-Za-z]');
+Route::get('/client/{dni}', [PaginaController::class, 'DNI'])->where('dni', '[0-9]{8}[A-Za-z]');
 
 // EXERCICI 6 — Ruta amb nom
-Route::get('/contacte', function () { 
-    return view('contacte'); 
-})->name('contacte.pagina');
+Route::get('/contacte', [PaginaController::class, 'contacte'])->name('contacte.pagina');
 
 // EXERCICI 7 — Redirecció entre rutes
-Route::get('/suport', function () {
-    return redirect('/contacte');
-});
+Route::get('/suport', [PaginaController::class, 'redContacte']);
 
 // EXERCICI 8 — Agrupació de rutes
 Route::prefix('management')->group(function () {
@@ -71,23 +55,14 @@ Route::prefix('management')->group(function () {
 });
 
 // EXERCICI 9 — Ruta API bàsica
-Route::get('/api/info', function () {
-    return response()->json([
-        'empresa' => 'La meva web',
-        'any' => 2024
-    ]);
-});
+Route::get('/api/info', action: [PaginaController::class, 'apiInfo']);
 
 // EXERCICI 10 — Ruta amb múltiples paràmetres
-Route::get('/info/{nom}/{cognom}/{edat}', function ($nom, $cognom, $edat) {
-    return view('info', [
-        'nom' => $nom,
-        'cognom' => $cognom,
-        'edat' => $edat
-    ]);
-})->where([
+Route::get('/info/{nom}/{cognom}/{edat}', [PaginaController::class, 'info'])->where([
     'nom' => '[A-Za-zÀ-ÿ]+',
     'cognom' => '[A-Za-zÀ-ÿ]+',
     'edat' => '[0-9]+'
 ]);
- 
+
+
+Route::get('/productes', [ProducteController::class, 'index']) ->name('productes.index');
