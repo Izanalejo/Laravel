@@ -9,7 +9,7 @@ use App\Http\Controllers\ProducteController;
 }); */
 
 Route::get('/', function () {
-return view("productes/index");
+return view("index");
 }
 );
 

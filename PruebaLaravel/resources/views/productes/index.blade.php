@@ -11,13 +11,11 @@
 @foreach($productes as $producte)
     <li>
         {{ $producte->name }} - {{ $producte->price }} € (euros)
+    </li>
  @endforeach
 </ul>
 
-<a href="{{ route('productes.create') }}">Nou producte</a>
 
-
-<h1>Llista de productes</h1>
 <a href="{{ route('productes.create') }}">Nou producte</a>
 <ul>
 @foreach($productes as $producte)
