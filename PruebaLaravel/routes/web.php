@@ -9,7 +9,7 @@ use App\Http\Controllers\ProducteController;
 }); */
 
 Route::get('/', function () {
-return view("index");
+return view("productes/index");
 }
 );
 
@@ -25,7 +25,7 @@ return view("hello"); //Estic anant a un archiu concret dins de la carpeta resou
 Route::get('/producte/{id}', [PaginaController::class, 'producte'])->where('id', '[0-9]+');
 
 
-Route::get('/productes', [ProducteController::class, 'index']) ->name('productes.index');
+
 
 Route::get('/info/{nom}/{cognom}/{edat}', [PaginaController::class, 'info'])->where([
     'nom' => '[A-Za-zÀ-ÿ]+',
@@ -34,4 +34,7 @@ Route::get('/info/{nom}/{cognom}/{edat}', [PaginaController::class, 'info'])->wh
 ]);
 
 Route::get('/productes/create', [ProducteController::class, 'create'])->name('productes.create');
+
 Route::post('/productes', [ProducteController::class, 'store'])->name('productes.store'); 
+
+Route::get('/productes', [ProducteController::class, 'index']) ->name('productes.index');
