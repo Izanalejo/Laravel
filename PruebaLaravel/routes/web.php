@@ -33,8 +33,16 @@ Route::get('/info/{nom}/{cognom}/{edat}', [PaginaController::class, 'info'])->wh
     'edat' => '[0-9]+'
 ]);
 
+//PARA MOSTRAR FORMULARI DE NOU PRODUCTE
+
 Route::get('/productes/create', [ProducteController::class, 'create'])->name('productes.create');
 
+//PARA GUARDAR EL NOU PRODUCTE
 Route::post('/productes', [ProducteController::class, 'store'])->name('productes.store'); 
 
 Route::get('/productes', [ProducteController::class, 'index']) ->name('productes.index');
+
+//PARA EDITAR PRODUCTE
+Route::get('/productes/{id}/edit', [ProducteController::class, 'edit'])->name('productes.edit');
+
+Route::put('/productes/{id}', [ProducteController::class, 'update'])->name('productes.update');
