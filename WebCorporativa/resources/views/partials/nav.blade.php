@@ -21,6 +21,10 @@
         <li class="nav-item">
           <a class="nav-link" href="{{ url('/management/estadistiques') }}">Estadístiques</a>
         </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url('/productes') }}">Productos</a>
+        </li>
       </ul>
       <a class="navbar-brand mx-auto" style="color: white">WEB CORPORATIVA DE LARAVEL</a>
     </div>

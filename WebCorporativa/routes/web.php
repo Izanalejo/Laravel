@@ -58,11 +58,23 @@ Route::prefix('management')->group(function () {
 Route::get('/api/info', action: [PaginaController::class, 'apiInfo']);
 
 // EXERCICI 10 — Ruta amb múltiples paràmetres
-Route::get('/info/{nom}/{cognom}/{edat}', [PaginaController::class, 'info'])->where([
-    'nom' => '[A-Za-zÀ-ÿ]+',
-    'cognom' => '[A-Za-zÀ-ÿ]+',
-    'edat' => '[0-9]+'
-]);
+Route::get('/info/{nom}/{cognom}/{edat}', [PaginaController::class, 'info'])->name('info');
 
 
 Route::get('/productes', [ProducteController::class, 'index']) ->name('productes.index');
+
+
+
+//PARA MOSTRAR FORMULARI DE NOU PRODUCTE
+
+Route::get('/productes/create', [ProducteController::class, 'create'])->name('productes.create');
+
+//PARA GUARDAR EL NOU PRODUCTE
+Route::post('/productes', [ProducteController::class, 'store'])->name('productes.store'); 
+
+Route::get('/productes', [ProducteController::class, 'index']) ->name('productes.index');
+
+//PARA EDITAR PRODUCTE
+Route::get('/productes/{id}/edit', [ProducteController::class, 'edit'])->name('productes.edit');
+
+Route::put('/productes/{id}', [ProducteController::class, 'update'])->name('productes.update');

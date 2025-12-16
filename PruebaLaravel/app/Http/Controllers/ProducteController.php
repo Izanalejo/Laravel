@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Producte;
 
+
 class ProducteController extends Controller
 {
     /**
@@ -29,7 +30,7 @@ class ProducteController extends Controller
      */
     public function store(Request $request)
     {
-         $data = $request->validate([
+        $data = $request->validate([
             'nom' => 'required|string|max:255',
             'preu' => 'required|numeric',
             'descripcio' => 'string',
@@ -66,7 +67,7 @@ class ProducteController extends Controller
      */
     public function update(Request $request, string $id)
     {
-         $producte = Producte::findOrFail($id);
+        $producte = Producte::findOrFail($id);
 
         $data = $request->validate([
             'nom' => 'required|string|max:255',
