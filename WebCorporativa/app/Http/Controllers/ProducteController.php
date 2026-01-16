@@ -58,7 +58,7 @@ class ProducteController extends Controller
      */
     public function edit(string $id)
     {
-        $producte = Producte::findOrFail($id);
+        $producte = Producte::find($id);
         return view('productes.edit', compact('producte'));
     }
 
