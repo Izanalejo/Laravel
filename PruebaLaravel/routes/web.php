@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PaginaController;
 use App\Http\Controllers\ProducteController;
+use App\Models\Cotxe;
+use App\Models\User;
+
 
 /* Route::get('/', function () {
     return view('welcome');// vaig a dins de la carpeta resources
@@ -46,3 +49,13 @@ Route::get('/productes', [ProducteController::class, 'index']) ->name('productes
 Route::get('/productes/{id}/edit', [ProducteController::class, 'edit'])->name('productes.edit');
 
 Route::put('/productes/{id}', [ProducteController::class, 'update'])->name('productes.update');
+
+
+Route::get('relacioProva', function() {
+    $user = User::findOrFail(3);
+    $cotxe = new Cotxe();
+    $cotxe->marca = 'Seat';
+    $cotxe->model = 'Ateca';
+    $cotxe->user()->associate($user);
+    $cotxe->save();
+});
