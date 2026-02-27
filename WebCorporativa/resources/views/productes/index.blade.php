@@ -16,7 +16,13 @@
                             <p class="card-text">{{ $producte->description}}</p>
                             <p class="card-text" style="font-weight: 20px"><cite>{{ $producte->price }}€</cite></p>
                         </div>
-                        <a href="{{ route('productes.edit', $producte->id) }}" class="btn btn-warning" style="background-color:#05e5ecec; border: none;">Editar</a> 
+                        <a href="{{ route('productes.edit', $producte->id) }}" class="btn" style="background-color:#05e5ecec; border: none;">Editar</a><br>
+                        <form action="{{ route('productes.destroy', $producte->id) }}" method="POST"> 
+                            @csrf
+                            @method('DELETE')
+                            <button class="btn btn-warning" type="submit">Eliminar</button>
+                            
+                        </form>
                     </div>
                 </div>
             @endforeach

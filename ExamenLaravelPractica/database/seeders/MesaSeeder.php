@@ -13,6 +13,6 @@ class MesaSeeder extends Seeder
      */
     public function run(): void
     {
-        Mesa::factory()->count(5)->create();
+        Mesa::factory()->count(15)->create();
     }
 }

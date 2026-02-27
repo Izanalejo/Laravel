@@ -19,5 +19,4 @@ class ComensalSeeder extends Seeder
         // Crea 20 comensals, i a més assigna a cadascun un mesa_id aleatori de la colecció $mesas
         Comensal::factory()->count(20)->recycle($mesas)->create();
         }
-
 }
