@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController; // <- nou
+use App\Http\Controllers\CategoryController;
+
 
 // ==========================================
 // RUTES PÚBLIQUES (No requereixen token)
@@ -38,3 +40,29 @@ Route::middleware('auth:sanctum')->group(function () {
         return $request->user();
     });
 });
+
+
+// ==========================================
+// RUTES PÚBLIQUES
+// ==========================================
+// ... rutes de registre i login que ja teniem …
+
+
+// Podem llistar (index) i veure detall (show) de les categories sense token
+Route::get('/categories', [CategoryController::class, 'index']);
+Route::get('/categories/{category}', [CategoryController::class, 'show']);
+
+// ==========================================
+// RUTES PROTEGIDES (auth:sanctum)
+// ==========================================
+Route::middleware('auth:sanctum')->group(function () {
+    
+    // ... rutes de logout i /user que ja tenies ...
+
+    // Només els usuaris amb Token poden crear, editar i eliminar
+    Route::post('/categories', [CategoryController::class, 'store']);
+    Route::put('/categories/{category}', [CategoryController::class, 'update']);
+    Route::delete('/categories/{category}', [CategoryController::class, 'destroy']);
+    
+});
+
